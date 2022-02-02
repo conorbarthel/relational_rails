@@ -1,2 +1,3 @@
 class Movie < ApplicationRecord
-end 
+  belongs_to :Director
+end
