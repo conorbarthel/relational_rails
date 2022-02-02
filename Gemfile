@@ -40,6 +40,9 @@ group :development, :test do
   gem 'simplecov'
   gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capybara'
+  gem 'launchy'
+  gem 'simplecov'
 end
 
 group :development do
