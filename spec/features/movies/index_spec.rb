@@ -13,7 +13,7 @@ RSpec.describe 'movies index page', type: :feature do
     movie_2 = director.movies.create!(title: "Requiem for a Dream", released: true, length: 115, genre: "Drama")
 
     visit "/movies"
-    save_and_open_page
+    # save_and_open_page
     expect(page).to have_content(movie_1.title)
     expect(page).to have_content("Released: #{movie_1.released}")
     expect(page).to have_content("Length: #{movie_1.length}")
