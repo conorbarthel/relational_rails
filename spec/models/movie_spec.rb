@@ -9,6 +9,7 @@ RSpec.describe Movie do
     it {should validate_presence_of :title}
     it {should validate_presence_of :length}
     it {should validate_presence_of :genre}
-    it {should validate_presence_of :released}
+    it {should allow_value(true).for(:recently_viewed)}
+    it {should allow_value(false).for(:recently_viewed)}
   end
 end

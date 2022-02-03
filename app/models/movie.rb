@@ -3,6 +3,5 @@ class Movie < ApplicationRecord
 
   validates_presence_of :title,
                         :length,
-                        :genre,
-                        :released
+                        :genre
 end

@@ -9,19 +9,19 @@ RSpec.describe 'movies index page', type: :feature do
 
   it 'display all movies and attributes' do
     director = Director.create!(name: "Darren Aronofsky", active: true, awards_won: 10)
-    movie_1 = director.movies.create!(title: "The Fountain", released: true, length: 120, genre: "Drama")
-    movie_2 = director.movies.create!(title: "Requiem for a Dream", released: true, length: 115, genre: "Drama")
+    fountain = director.movies.create!(title: "The Fountain", recently_viewed: true, length: 120, genre: "Drama")
+    requiem = director.movies.create!(title: "Requiem for a Dream", recently_viewed: false, length: 115, genre: "Drama")
 
     visit "/movies"
     # save_and_open_page
-    expect(page).to have_content(movie_1.title)
-    expect(page).to have_content("Released: #{movie_1.released}")
-    expect(page).to have_content("Length: #{movie_1.length}")
-    expect(page).to have_content("Genre: #{movie_1.genre}")
-    expect(page).to have_content(movie_2.title)
-    expect(page).to have_content("Released: #{movie_2.released}")
-    expect(page).to have_content("Length: #{movie_1.length}")
-    expect(page).to have_content("Genre: #{movie_1.genre}")
+    expect(page).to have_content(fountain.title)
+    expect(page).to have_content("Recently Viewed: #{fountain.recently_viewed}")
+    expect(page).to have_content("Length: #{fountain.length}")
+    expect(page).to have_content("Genre: #{fountain.genre}")
+    expect(page).to have_content(requiem.title)
+    expect(page).to have_content("Recently Viewed: #{requiem.recently_viewed}")
+    expect(page).to have_content("Length: #{requiem.length}")
+    expect(page).to have_content("Genre: #{requiem.genre}")
     expect(page).to_not have_content(director.name)
   end
 end

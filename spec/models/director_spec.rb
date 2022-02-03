@@ -7,7 +7,8 @@ RSpec.describe Director do
 
   describe 'validations' do
     it {should validate_presence_of :name}
-    it {should validate_presence_of :active}
+    it {should allow_value(true).for(:active)}
+    it {should allow_value(false).for(:active)}
     it {should validate_presence_of :awards_won}
   end
 end
