@@ -8,7 +8,7 @@ RSpec.describe 'director show page', type: :feature do
   # Then I see the parent with that id including the parent's attributes:
   # - data from each column that is on the parent table
 
-  it 'displays the director name' do
+  it 'displays the director name and attributes' do
     director = Director.create!(name: "Darren Aronofsky", active: true, awards_won: 10)
     movie_1 = director.movies.create!(title: "The Fountain", released: true, length: 120, genre: "Drama")
     movie_2 = director.movies.create!(title: "Requiem for a Dream", released: true, length: 115, genre: "Drama")
