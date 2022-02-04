@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2022_02_03_145255) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "discs", force: :cascade do |t|
+    t.string "name"
+    t.string "plastic"
+    t.integer "speed"
+    t.boolean "available"
+    t.bigint "producer_id"
+    t.index ["producer_id"], name: "index_discs_on_producer_id"
+  end
+
   create_table "movies", force: :cascade do |t|
     t.string "title"
     t.boolean "recently_viewed"
@@ -42,5 +51,6 @@ ActiveRecord::Schema.define(version: 2022_02_03_145255) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "discs", "producers"
   add_foreign_key "movies", "directors"
 end
