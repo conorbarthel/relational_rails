@@ -13,6 +13,10 @@ RSpec.describe 'index' do
     expect(page).to have_content(zone.plastic)
     expect(page).to have_content(zone.speed)
     expect(page).to have_content(zone.available)
+    expect(page).to have_content(leopard.name)
+    expect(page).to have_content(leopard.plastic)
+    expect(page).to have_content(leopard.speed)
+    expect(page).to have_content(leopard.available)
     expect(page).to_not have_content(discraft.name)
   end
 end
