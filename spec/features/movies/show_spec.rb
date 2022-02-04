@@ -9,13 +9,13 @@ RSpec.describe 'movie show page', type: :feature do
 
   it 'displays the movie name and attributes' do
     director = Director.create!(name: "Darren Aronofsky", active: true, awards_won: 10)
-    movie_1 = director.movies.create!(title: "The Fountain", released: true, length: 120, genre: "Drama")
-    movie_2 = director.movies.create!(title: "Requiem for a Dream", released: true, length: 115, genre: "Drama")
+    movie_1 = director.movies.create!(title: "The Fountain", recently_viewed: true, length: 120, genre: "Drama")
+    movie_2 = director.movies.create!(title: "Requiem for a Dream", recently_viewed: false, length: 115, genre: "Drama")
 
     visit "/movies/#{movie_1.id}"
     # save_and_open_page
     expect(page).to have_content(movie_1.title)
-    expect(page).to have_content("Released: #{movie_1.released}")
+    expect(page).to have_content("Recently Viewed: #{movie_1.recently_viewed}")
     expect(page).to have_content("Length: #{movie_1.length}")
     expect(page).to have_content("Genre: #{movie_1.genre}")
     expect(page).to_not have_content(movie_2.title)
