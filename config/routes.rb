@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/producers', to:'producers#index'
   get '/producers/:id', to:'producers#show'
   get '/discs', to:'discs#index'
+  get '/discs/:id', to:'discs#show'
   get '/directors', to: 'directors#index'
   get '/directors/:id', to: 'directors#show'
   get '/movies', to: 'movies#index'

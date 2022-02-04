@@ -7,7 +7,7 @@ RSpec.describe 'index' do
     zone = discraft.discs.create!(name: 'Zone', plastic: 'Glow', speed: 4, available: true)
     leopard = innova.discs.create!(name: 'Leopard', plastic: 'DX', speed: 6, available: true)
 
-    visit "/discs/#{disc.id}"
+    visit "/discs/#{zone.id}"
 
     expect(page).to have_content(zone.name)
     expect(page).to have_content(zone.plastic)

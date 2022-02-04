@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'index' do
-  it 'displays the name of all discs' do
+  it 'displays the attributes of all discs' do
     innova = Producer.create!(name:'Innova', number_of_athletes: 56, free_shipping: true)
     discraft = Producer.create!(name:'Discraft', number_of_athletes: 65, free_shipping: true)
     zone = discraft.discs.create!(name: 'Zone', plastic: 'Glow', speed: 4, available: true)
