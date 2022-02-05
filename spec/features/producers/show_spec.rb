@@ -12,4 +12,12 @@ RSpec.describe 'the producer index page' do
     expect(page).to have_content(innova.free_shipping)
     expect(page).to_not have_content(discraft.name)
   end
+
+  it "shows a count of number of discs" do
+    innova = Producer.create(name:'Innova', number_of_athletes: 56, free_shipping: true)
+
+    visit "/producers/#{innova.id}"
+
+    expect(page).to have_content(innova.count)
+  end
 end
