@@ -36,30 +36,6 @@ RSpec.describe 'director show page', type: :feature do
     expect(page).to have_content("Movie Count: #{@stanley.movies.count}")
   end
 
-  # User Story 8, Child Index Link
-  # As a visitor // When I visit any page on the site
-  # Then I see a link at the top of the page that takes me to the Child Index
-  it 'displays link to Child Index' do
-
-    visit "/directors/#{@stanley.id}"
-
-    click_on "Movies"
-
-    expect(current_path).to eq("/movies")
-  end
-
-  # User Story 9, Parent Index Link
-  # As a visitor // When I visit any page on the site
-  # Then I see a link at the top of the page that takes me to the Parent Index
-  it 'displays link to Parent Index' do
-
-    visit "/directors/#{@stanley.id}"
-
-    click_on "Directors"
-
-    expect(current_path).to eq("/directors")
-  end
-
   # User Story 10, Parent Child Index Link
   # As a visitor // When I visit a parent show page ('/parents/:id')
   # Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')

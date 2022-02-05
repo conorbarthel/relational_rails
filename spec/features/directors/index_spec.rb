@@ -38,28 +38,4 @@ RSpec.describe 'director index page', type: :feature do
     expect(@denis.name).to appear_before(@wes.name)
     expect(@wes.name).to appear_before(@stanley.name)
   end
-
-  # User Story 8, Child Index Link
-  # As a visitor // When I visit any page on the site
-  # Then I see a link at the top of the page that takes me to the Child Index
-  it 'displays link to Child Index' do
-
-    visit "/directors"
-
-    click_on "Movies"
-
-    expect(current_path).to eq("/movies")
-  end
-
-  # User Story 9, Parent Index Link
-  # As a visitor // When I visit any page on the site
-  # Then I see a link at the top of the page that takes me to the Parent Index
-  it 'displays link to Parent Index' do
-
-    visit "/directors"
-
-    click_on "Directors"
-
-    expect(current_path).to eq("/directors")
-  end
 end
