@@ -3,5 +3,5 @@ class Movie < ApplicationRecord
   validates_presence_of :title,
                         :length,
                         :genre
-  validates :recently_viewed, inclusion: [true, false]
+  validates             :recently_viewed, inclusion: [true, false]
 end
