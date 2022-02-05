@@ -2,18 +2,15 @@ require 'rails_helper'
 
 RSpec.describe 'movies index page', type: :feature do
   # User Story 3, Child Index (x2)
-  #
-  # As a visitor
-  # When I visit '/child_table_name'
+  # As a visitor // When I visit '/child_table_name'
   # Then I see each Child in the system including the Child's attributes:
-
   it 'display all movies and attributes' do
     director = Director.create!(name: "Darren Aronofsky", active: true, awards_won: 10)
     fountain = director.movies.create!(title: "The Fountain", recently_viewed: true, length: 120, genre: "Drama")
     requiem = director.movies.create!(title: "Requiem for a Dream", recently_viewed: false, length: 115, genre: "Drama")
 
     visit "/movies"
-    # save_and_open_page
+
     expect(page).to have_content(fountain.title)
     expect(page).to have_content("Recently Viewed: #{fountain.recently_viewed}")
     expect(page).to have_content("Length: #{fountain.length}")
@@ -23,5 +20,29 @@ RSpec.describe 'movies index page', type: :feature do
     expect(page).to have_content("Length: #{requiem.length}")
     expect(page).to have_content("Genre: #{requiem.genre}")
     expect(page).to_not have_content(director.name)
+  end
+
+  # User Story 8, Child Index Link
+  # As a visitor // When I visit any page on the site
+  # Then I see a link at the top of the page that takes me to the Child Index
+  it 'displays link to Child Index' do
+
+    visit "/movies"
+
+    click_on "Movies"
+
+    expect(current_path).to eq("/movies")
+  end
+
+  # User Story 9, Parent Index Link
+  # As a visitor // When I visit any page on the site
+  # Then I see a link at the top of the page that takes me to the Parent Index
+  it 'displays link to Parent Index' do
+
+    visit "/movies"
+
+    click_on "Directors"
+
+    expect(current_path).to eq("/directors")
   end
 end

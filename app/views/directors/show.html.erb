@@ -1,5 +1,9 @@
+<a href="/movies">Movies</a>
+<a href="/directors">Directors</a>
+
 <h1><%= @director.name %></h1>
 
 <h3>Currently Active: <%= @director.active %> </h3>
 <h3>Awards Won: <%= @director.awards_won %></h3>
 <h3>Movie Count: <%= @director.total_movies %></h3>
+<a href="/directors/<%= @director.id %>/movies"><%= @director.name %> Movies</a>

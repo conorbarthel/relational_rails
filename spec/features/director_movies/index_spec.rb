@@ -12,8 +12,7 @@ RSpec.describe 'director index page', type: :feature do
   end
 
   # User Story 5, Parent Children Index (x2)
-  # As a visitor
-  # When I visit '/parents/:parent_id/child_table_name'
+  # As a visitor // When I visit '/parents/:parent_id/child_table_name'
   # Then I see each Child that is associated with that Parent with each Child's attributes:
   it 'displays the director and movies with attributes' do
 
@@ -34,8 +33,7 @@ RSpec.describe 'director index page', type: :feature do
   end
 
   # User Story 8, Child Index Link
-  # As a visitor
-  # When I visit any page on the site
+  # As a visitor // When I visit any page on the site
   # Then I see a link at the top of the page that takes me to the Child Index
   it 'displays link to Child Index' do
 
@@ -44,5 +42,17 @@ RSpec.describe 'director index page', type: :feature do
     click_on "Movies"
 
     expect(current_path).to eq("/movies")
+  end
+
+  # User Story 9, Parent Index Link
+  # As a visitor // When I visit any page on the site
+  # Then I see a link at the top of the page that takes me to the Parent Index
+  it 'displays link to Parent Index' do
+
+      visit "/directors/#{@stanley.id}/movies"
+
+    click_on "Directors"
+
+    expect(current_path).to eq("/directors")
   end
 end
