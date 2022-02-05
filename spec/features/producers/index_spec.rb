@@ -17,7 +17,9 @@ RSpec.describe 'the producer index page' do
     discraft = Producer.create!(name:'Discraft', number_of_athletes: 65, free_shipping: true)
 
     visit "/producers"
-    save_and_open_page
-    expect(discraft.name).to appear_before(innova.name)
+
+    within '#disc_1' do
+      expect(discraft.name).to appear_before(innova.name)
+    end
   end
 end

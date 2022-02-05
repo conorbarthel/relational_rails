@@ -41,6 +41,7 @@ group :development, :test do
   gem 'pry'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara'
+  gem 'orderly'
   gem 'launchy'
   gem 'simplecov'
   gem 'shoulda-matchers', '~> 4.0'
