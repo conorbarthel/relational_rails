@@ -19,4 +19,8 @@ class ProducersController < ApplicationController
   def producer_params
     params.permit(:name, :number_of_athletes, :free_shipping)
   end
+
+  def edit
+    @producer = Producer.find(params[:id])
+  end
 end

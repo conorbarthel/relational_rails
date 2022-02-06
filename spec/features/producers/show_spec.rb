@@ -29,4 +29,11 @@ RSpec.describe 'the producer index page' do
     click_on "#{@innova.name} discs"
     expect(current_path).to eq("/producers/#{@innova.id}/discs")
   end
+
+  it "has a link to edit page" do
+    visit "/producers/#{@innova.id}"
+    #save_and_open_page
+    click_on "Update #{@innova.name}"
+    expect(current_path).to eq("/producers/#{@innova.id}/edit")
+  end
 end
