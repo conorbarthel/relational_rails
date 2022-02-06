@@ -25,11 +25,7 @@ class DirectorsController < ApplicationController
 
   def update
     director = Director.find(params[:id])
-    director.update({
-      name: params[:name],
-      active: params[:active],
-      awards_won: params[:awards_won]
-      })
+    director.update(director_params)
     director.save
     redirect_to "/directors/#{director.id}"
   end

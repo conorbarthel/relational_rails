@@ -17,6 +17,6 @@ class DirectorMoviesController < ApplicationController
   end
 
   def movie_params
-    params.permit(:title, :length, :recently_viewed)
+    params.permit(:title, :length, :genre, :recently_viewed)
   end
 end

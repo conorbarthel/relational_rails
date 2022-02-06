@@ -21,4 +21,18 @@ RSpec.describe 'movie show page', type: :feature do
     expect(page).to_not have_content(@movie_2.title)
     expect(page).to_not have_content(@director.name)
   end
+
+  # User Story 14, Child Update (x2)
+  # As a visitor // When I visit a Child Show page
+  # Then I see a link to update that Child "Update Child"
+  # When I click the link
+  # I am taken to '/child_table_name/:id/edit' where I see a form to edit the child's attributes:
+  it 'displays Update Director link to directors/:id/edit' do
+
+    visit "/movies/#{@movie_1.id}"
+
+    click_on "Update Movie"
+
+    expect(current_path).to eq("/movies/#{@movie_1.id}/edit")
+  end
 end

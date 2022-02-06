@@ -21,6 +21,7 @@ RSpec.describe 'directors/:id/movies/new page', type: :feature do
 
     fill_in(:title, with: "The Shining")
     fill_in(:length, with: 200)
+    fill_in(:genre, with: "Horror")
     check('Recently viewed')
 
     click_button "Create Movie"
