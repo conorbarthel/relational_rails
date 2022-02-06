@@ -1,0 +1,11 @@
+<%= form_with url: "/producers", method: :post, local: true do |form| %>
+  <p>Enter a New Producer:</p>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :number_of_athletes %>
+  <%= form.number_field :number_of_athletes %>
+  <%= form.label :free_shipping %>
+  <%= form.check_box :free_shipping %>
+
+  <%= form.submit "Create Producer" %>
+<% end %>

@@ -1,10 +1,8 @@
 <h1>Disc Producers</h1>
-<!-- <div id= "nav_bar">
-  <h3><a href="/discs/"> Discs </a></h3>
-</div> -->
-<div id= 'disc_1'>
+<div id= 'producer_list'>
   <% @producers.each do |producer| %>
     <h3><%= producer.name %></h3>
-    <h3><%= producer.created_at %></h3>
+    <p><%= producer.created_at %></p>
   <% end %>
 </div>
+<a href="/producers/new"> New Producer</a>
