@@ -1,7 +1,7 @@
 class ProducersController < ApplicationController
 
   def index
-    @producers = Producer.all
+    @producers = Producer.all.order("created_at desc")
   end
 
   def show

@@ -6,9 +6,16 @@ RSpec.describe Producer, type: :model do
   end
 
   describe 'class methods' do
-    xit '#most_recent' do
-      expect(Producer.most_recent[0]).to_be > (Producer.most_recent[1])
-      expect(Producer.most_recent[-1]).to_be < (Producer.most_recent[0])
+    it 'count' do
+      innova = Producer.create!(name:'Innova', number_of_athletes: 56, free_shipping: true)
+
+      expect(innova.count).to eq(0)
+
+      innova.discs.create!(name: 'Leopard', plastic: 'DX', speed: 6, available: true)
+      innova.discs.create!(name: 'Destroyer', plastic: 'Star', speed: 12, available: true)
+      innova.discs.create!(name: 'Rhyno', plastic: 'R-Pro', speed: 2, available: false)
+
+      expect(innova.count).to eq(3)
     end
   end
 end
