@@ -39,7 +39,12 @@ RSpec.describe 'director index page', type: :feature do
     expect(current_path).to eq("/movies")
   end
 
-
+  it "all pages link to the /discs page" do
+    pages = ["directors", "movies", "discs", "producres", "directors#{@stanley.id}", "directors#{@stanley.id}/movies"]
+    visit "/#{pages.sample}"
+    click_on "Discs"
+    expect(current_path).to eq("/discs")
+  end
 
   # User Story 9, Parent Index Link
   # As a visitor // When I visit any page on the site
@@ -77,5 +82,12 @@ RSpec.describe 'director index page', type: :feature do
     visit "/directors/#{@stanley.id}/movies"
     click_on "Directors"
     expect(current_path).to eq("/directors")
+  end
+
+  it "all pages link to the /producers page" do
+    pages = ["directors", "movies", "discs", "producres", "directors#{@stanley.id}", "directors#{@stanley.id}/movies"]
+    visit "/#{pages.sample}"
+    click_on "Producers"
+    expect(current_path).to eq("/producers")
   end
 end
