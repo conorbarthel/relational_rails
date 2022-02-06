@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'director index page', type: :feature do
+RSpec.describe 'director/:id/movies index page', type: :feature do
   before :each do
     @stanley = Director.create!(name: 'Stanley Kubrick', active: false, awards_won: 26)
     @wes = Director.create!(name: 'Wes Anderson', active: true, awards_won: 11)
@@ -30,5 +30,16 @@ RSpec.describe 'director index page', type: :feature do
     # expect(page).to_not have_content(movie_3.length) -- removed becuase it doesn't work if movies have same length
     # expect(page).to_not have_content(movie_3.recently_viewed)-- removed becuase it doesn't work if movies have same length
     # expect(page).to_not have_content(movie_3.genre)-- removed becuase it doesn't work if movies have same genre
+  end
+
+  # User Story 13, Parent Child Creation (x2)
+  # As a visitor // When I visit a Parent Childs Index page
+  # Then I see a link to add a new adoptable child for that parent "Create Child"
+  # When I click the link
+  # I am taken to '/parents/:parent_id/child_table_name/new' where I see a form to add a new adoptable child
+  it 'displays link "Add Movie" to /director/:id/movies' do
+    visit "/directors/#{@stanley.id}/movies"
+    click_on "Add Movie"
+    expect(current_path).to eq("/directors/#{@stanley.id}/movies/new")
   end
 end

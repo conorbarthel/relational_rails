@@ -12,8 +12,7 @@ class DirectorsController < ApplicationController
 
   def create
     director = Director.create(director_params)
-
-     redirect_to "/directors"
+    redirect_to "/directors"
   end
 
   def director_params
