@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'director index page', type: :feature do
+RSpec.describe 'director new page', type: :feature do
   # User Story 11, Parent Creation (x2)
   # ...After I am taken to '/parents/new'
   # I  see a form for a new parent record

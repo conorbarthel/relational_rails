@@ -47,4 +47,18 @@ RSpec.describe 'director show page', type: :feature do
 
     expect(current_path).to eq("/directors/#{@stanley.id}/movies")
   end
+
+  # User Story 12, Parent Update (x2)
+  # As a visitor // When I visit a parent show page
+  # Then I see a link to update the parent "Update Parent"
+  # When I click the link "Update Parent"
+  # Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:
+  it 'displays Update Director link to directors/:id/edit' do
+
+    visit "/directors/#{@stanley.id}"
+
+    click_on "Update Director"
+
+    expect(current_path).to eq("/directors/#{@stanley.id}/edit")
+  end
 end

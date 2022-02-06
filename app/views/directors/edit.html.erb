@@ -1,0 +1,17 @@
+<h1> Edit Director </h1>
+
+<%= form_with url: "/directors/#{@director.id}", method: :post, local: true do |form| %>
+  <p>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :awards_won %>
+    <%= form.number_field :awards_won %>
+  </p>
+  <p>
+    <%= form.label :active %>
+    <%= form.check_box :active %>
+  </p>
+  <%= form.submit "Submit Updates" %>
+<% end %>
