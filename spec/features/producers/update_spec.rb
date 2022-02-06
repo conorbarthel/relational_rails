@@ -7,7 +7,7 @@ RSpec.describe 'the producer index page' do
   end
 
   it "the form is filled out information is updated" do
-    visit "/producers/edit"
+    visit "/producers/#{@innova.id}/edit"
     fill_in("Name", with:"Innova")
     fill_in("Number of athletes", with:14)
     click_button("Update Producer")
@@ -18,3 +18,4 @@ RSpec.describe 'the producer index page' do
     expect(page).to have_content(14)
     expect(page).to have_content("false")
   end
+end

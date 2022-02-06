@@ -23,4 +23,10 @@ class ProducersController < ApplicationController
   def edit
     @producer = Producer.find(params[:id])
   end
+
+  def update
+    producer = Producer.find(params[:id])
+    producer.update(producer_params)
+    redirect_to "/producers/#{producer.id}"
+  end
 end
