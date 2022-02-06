@@ -29,7 +29,7 @@ RSpec.describe 'director index page', type: :feature do
   # As a visitor // When I visit the parent index,
   # I see that records are ordered by most recently created first
   # And next to each of the records I see when it was created
-  it 'displays the director and movies with attributes - create date ascending' do
+  it 'displays the director and movies with attributes - create date descending' do
 
     visit "/directors"
 
@@ -37,5 +37,16 @@ RSpec.describe 'director index page', type: :feature do
     expect(page).to have_content(@wes.created_at)
     expect(@denis.name).to appear_before(@wes.name)
     expect(@wes.name).to appear_before(@stanley.name)
+  end
+
+  # User Story 11, Parent Creation (x2)
+  # As a visitor // When I visit the Parent Index page
+  # Then I see a link to create a new Parent record, "New Parent"
+  # When I click this link
+  # Then I am taken to '/parents/new'
+  it 'displays link "Add Director" to /director/new' do
+    visit "/directors"
+    click_on "Add Director"
+    expect(current_path).to eq("/directors/new")
   end
 end
