@@ -25,7 +25,7 @@ RSpec.describe 'the producer index page' do
   it 'has a link to its discs' do
 
     visit "/producers/#{@innova.id}"
-    save_and_open_page
+    #save_and_open_page
     click_on "#{@innova.name} discs"
     expect(current_path).to eq("/producers/#{@innova.id}/discs")
   end
