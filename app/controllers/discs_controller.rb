@@ -7,4 +7,6 @@ class DiscsController < ApplicationController
   def show
     @disc = Disc.find(params[:id])
   end
+
+  
 end

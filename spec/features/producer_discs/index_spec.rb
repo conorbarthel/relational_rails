@@ -21,4 +21,13 @@ RSpec.describe 'index' do
     expect(page).to have_content(nuke.available)
     expect(page).to_not have_content(leopard.name)
   end
+
+  it "links to /producers/id:/discs/new" do
+    discraft = Producer.create!(name:'Discraft', number_of_athletes: 65, free_shipping: true)
+    zone = discraft.discs.create!(name: 'Zone', plastic: 'Glow', speed: 4, available: true)
+    visit "/producers/#{discraft.id}/discs"
+    #save_and_open_page
+    click_on "New Disc"
+    expect(current_path).to eq("/producers/#{discraft.id}/discs/new")
+  end
 end
