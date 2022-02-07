@@ -43,4 +43,29 @@ RSpec.describe 'director show page', type: :feature do
       expect(current_path).to eq("/directors/#{@stanley.id}/movies")
     end
   end
+
+  describe 'User Story 19' do
+    it 'displays a delete director link on show page' do
+      # As a visitor
+      # When I visit a parent show page
+      visit "/directors/#{@stanley.id}"
+      # Then I see a link to delete the parent
+      expect(page).to have_content("Delete Director")
+    end
+
+    it 'deletes director and ALL movies - redirects to parent index page' do
+      visit "/directors/#{@stanley.id}"
+      # When I click the link "Delete Parent"
+      click_on "Delete Director"
+      # Then a 'DELETE' request is sent to '/parents/:id',
+      # the parent is deleted, and all child records are deleted
+      expect(current_path).to eq("/directors")
+      expect(page).to_not have_content("Stanley Kubrick")
+  
+      visit "/movies"
+      expect(page).to_not have_content("Barry Lyndon")
+      # and I am redirected to the parent index page where I no longer see this parent
+    end
+  end
+
 end

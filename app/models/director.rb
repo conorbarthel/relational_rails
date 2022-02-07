@@ -1,5 +1,5 @@
 class Director < ApplicationRecord
-  has_many :movies
+  has_many :movies, dependent: :destroy
   validates_presence_of :name,
                         :awards_won
   validates :active, inclusion: [true, false]

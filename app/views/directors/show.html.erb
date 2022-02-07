@@ -6,3 +6,5 @@
 
 <%= link_to "#{@director.name} Movies", "/directors/#{@director.id}/movies" %>
 <%= link_to "Update Director", "/directors/#{@director.id}/edit" %>
+
+<%= link_to "Delete Director", "/directors/#{@director.id}", method: :delete %></p>
