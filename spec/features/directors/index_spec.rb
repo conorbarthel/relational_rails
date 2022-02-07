@@ -35,4 +35,15 @@ RSpec.describe 'director index page', type: :feature do
       expect(@wes.name).to appear_before(@stanley.name)
     end
   end
+
+  describe 'User Story 17' do
+    it 'displays link to edit parent - next to each parent' do
+      visit "/directors"
+      expect("Wes Anderson").to appear_before("Edit #{@wes.name}")
+      expect("Edit #{@wes.name}").to appear_before("Stanley Kubrick")
+      
+      click_on "Edit #{@wes.name}"
+      expect(current_path).to eq("/directors/#{@wes.id}/edit")
+    end
+  end
 end
