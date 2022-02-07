@@ -20,4 +20,18 @@ RSpec.describe 'movie show page', type: :feature do
       expect(page).to_not have_content(@director.name)
     end
   end
+
+  describe 'User Story 20' do
+    it 'displays the movie name and attributes' do
+      visit "/movies/#{@movie_1.id}"
+
+      click_on "Delete Movie"
+
+      expect(current_path).to eq("/movies")
+      expect(page).to_not have_content("#{@movie_1.title}")
+
+      visit '/directors'
+      expect(page).to have_content("#{@director.name}")
+    end
+  end
 end

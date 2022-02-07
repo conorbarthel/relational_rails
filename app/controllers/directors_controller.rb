@@ -20,7 +20,7 @@ class DirectorsController < ApplicationController
     director.destroy
 
     redirect_to "/directors"
- end
+  end
 
   def edit
     @director = Director.find(params[:id])

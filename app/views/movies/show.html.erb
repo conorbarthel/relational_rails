@@ -5,3 +5,4 @@
 <h3>Director: <%= @movie.director_id %></h3>
 
 <%= link_to "Update Movie", "/movies/#{@movie.id}/edit" %>
+<%= link_to "Delete Movie", "/movies/#{@movie.id}", method: :delete %>
