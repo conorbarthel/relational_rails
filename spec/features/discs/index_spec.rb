@@ -6,6 +6,7 @@ RSpec.describe 'index' do
     @discraft = Producer.create!(name:'Discraft', number_of_athletes: 65, free_shipping: true)
     @zone = @discraft.discs.create!(name: 'Zone', plastic: 'Glow', speed: 4, available: true)
     @leopard = @innova.discs.create!(name: 'Leopard', plastic: 'DX', speed: 6, available: true)
+    @rhyno = @innova.discs.create!(name: 'Rhyno', plastic: 'R-Pro', speed: 2, available: false)
   end
 
   it 'displays the attributes of all discs' do
@@ -22,5 +23,10 @@ RSpec.describe 'index' do
     expect(page).to_not have_content(@discraft.name)
   end
 
-  
+  it "only displays available discs" do
+    visit "/discs"
+
+    expect(page).to have_content(@zone.name)
+    expect(page).to_not have_content(@rhyno.name)
+  end
 end

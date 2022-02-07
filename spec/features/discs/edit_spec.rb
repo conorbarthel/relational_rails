@@ -16,7 +16,6 @@ RSpec.describe 'edit' do
     fill_in("Name", with:"Leopard3")
     fill_in("Plastic", with:"Halo")
     fill_in("Speed", with:7)
-    save_and_open_page
     fill_in("Producer", with:"#{@innova.id}")
     check("available")
     click_button("Update Disc")

@@ -1,7 +1,7 @@
 class DiscsController < ApplicationController
 
   def index
-    @discs = Disc.all
+    @discs = Disc.all.where(available: true)
   end
 
   def show
