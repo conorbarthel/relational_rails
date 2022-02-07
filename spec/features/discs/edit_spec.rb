@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.describe 'edit' do
 
   before(:each) do
@@ -10,14 +12,14 @@ RSpec.describe 'edit' do
   it "the form is filled out information is updated" do
 
     visit "/discs/#{@leopard.id}/edit"
-    
+
     fill_in("Name", with:"Leopard3")
     fill_in("Plastic", with:"Halo")
     fill_in("Speed", with:7)
-    fill_in("Producer id", with:"#{@innova.id}")
+    save_and_open_page
+    fill_in("Producer", with:"#{@innova.id}")
     check("available")
     click_button("Update Disc")
-    save_and_open_page
 
     expect(current_path).to eq("/discs/#{@leopard.id}")
     expect(page).to have_content("Leopard3")

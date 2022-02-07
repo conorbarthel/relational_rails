@@ -17,4 +17,8 @@ class DiscsController < ApplicationController
     disc.update(disc_params)
     redirect_to "/discs/#{disc.id}"
   end
+
+  def disc_params
+    params.permit(:name, :plastic, :speed, :available, :producer_id)
+  end
 end
