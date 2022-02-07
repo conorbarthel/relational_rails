@@ -40,7 +40,7 @@ RSpec.describe 'director index page', type: :feature do
   end
 
   it "all pages link to the /discs page" do
-    pages = ["directors", "movies", "discs", "producres", "directors#{@stanley.id}", "directors#{@stanley.id}/movies"]
+    pages = ["directors", "movies", "discs", "producers", "directors/#{@stanley.id}", "directors/#{@stanley.id}/movies"]
     visit "/#{pages.sample}"
     click_on "Discs"
     expect(current_path).to eq("/discs")
@@ -85,7 +85,7 @@ RSpec.describe 'director index page', type: :feature do
   end
 
   it "all pages link to the /producers page" do
-    pages = ["directors", "movies", "discs", "producres", "directors#{@stanley.id}", "directors#{@stanley.id}/movies"]
+    pages = ["directors", "movies", "discs", "producers", "directors/#{@stanley.id}", "directors/#{@stanley.id}/movies"]
     visit "/#{pages.sample}"
     click_on "Producers"
     expect(current_path).to eq("/producers")
