@@ -4,4 +4,9 @@ class Movie < ApplicationRecord
                         :length,
                         :genre
   validates             :recently_viewed, inclusion: [true, false]
+
+
+  def self.recently_viewed?
+    where(recently_viewed: true)
+  end
 end

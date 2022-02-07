@@ -3,3 +3,5 @@
 <h3>Length: <%= @movie.length %></h3>
 <h3>Genre: <%= @movie.genre %></h3>
 <h3>Director: <%= @movie.director_id %></h3>
+
+<%= link_to "Update Movie", "/movies/#{@movie.id}/edit" %>

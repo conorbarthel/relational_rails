@@ -11,40 +11,36 @@ RSpec.describe 'director show page', type: :feature do
     @movie_4 = @wes.movies.create!(title: 'The Life Aqatic with Steve Zissou', recently_viewed: false, length: 118, genre: 'Comedy-Drama')
   end
 
-  # User Story 2, Parent Show (x2)
-  # As a visitor // When I visit '/parents/:id'
-  # Then I see the parent with that id including the parent's attributes:
-  # - data from each column that is on the parent table
-  it 'displays the director name and attributes' do
+  describe 'User Story 2' do
+    it 'displays the director name and attributes' do
 
-    visit "/directors/#{@stanley.id}"
+      visit "/directors/#{@stanley.id}"
 
-    expect(page).to have_content(@stanley.name)
-    expect(page).to have_content("Currently Active: #{@stanley.active}")
-    expect(page).to have_content("Awards Won: #{@stanley.awards_won}")
-    expect(page).to_not have_content(@movie_1)
-    expect(page).to_not have_content(@movie_2)
+      expect(page).to have_content(@stanley.name)
+      expect(page).to have_content("Currently Active: #{@stanley.active}")
+      expect(page).to have_content("Awards Won: #{@stanley.awards_won}")
+      expect(page).to_not have_content(@movie_1)
+      expect(page).to_not have_content(@movie_2)
+    end
   end
 
-  # User Story 7, Parent Child Count (x2)
-  # As a visitor // When I visit a parent's show page
-  # I see a count of the number of children associated with this parent
-  it 'displays the directors movie count' do
+  describe 'User Story 7' do
+    it 'displays the directors movie count' do
 
-    visit "/directors/#{@stanley.id}"
+      visit "/directors/#{@stanley.id}"
 
-    expect(page).to have_content("Movie Count: #{@stanley.movies.count}")
+      expect(page).to have_content("Movie Count: #{@stanley.movies.count}")
+    end
   end
 
-  # User Story 10, Parent Child Index Link
-  # As a visitor // When I visit a parent show page ('/parents/:id')
-  # Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
-  it 'displays link to directors/:id/movies' do
+  describe 'User Story 10' do
+    it 'displays link to directors/:id/movies' do
 
-    visit "/directors/#{@stanley.id}"
+      visit "/directors/#{@stanley.id}"
 
-    click_on "#{@stanley.name} Movies"
+      click_on "#{@stanley.name} Movies"
 
-    expect(current_path).to eq("/directors/#{@stanley.id}/movies")
+      expect(current_path).to eq("/directors/#{@stanley.id}/movies")
+    end
   end
 end
