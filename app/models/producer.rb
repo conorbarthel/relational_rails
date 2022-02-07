@@ -7,4 +7,8 @@ class Producer < ApplicationRecord
   def count
     discs.count
   end
+
+  def sort_alpha
+    discs.order(:name)
+  end
 end

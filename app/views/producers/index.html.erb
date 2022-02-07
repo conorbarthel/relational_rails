@@ -3,6 +3,7 @@
   <% @producers.each do |producer| %>
     <h3><%= producer.name %></h3>
     <p><%= producer.created_at %></p>
+    <%= link_to "Edit #{producer.name} Info", "/producers/#{producer.id}/edit" %>
   <% end %>
 </div>
 <a href="/producers/new"> New Producer</a>

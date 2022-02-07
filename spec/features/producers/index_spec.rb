@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe 'the producer index page' do
   before(:each) do
     @innova = Producer.create(name:'Innova', number_of_athletes: 56, free_shipping: true)
@@ -8,7 +7,6 @@ RSpec.describe 'the producer index page' do
   end
 
   it 'displays the name of all producers' do
-
     visit "/producers"
 
     expect(page).to have_content(@innova.name)
@@ -16,7 +14,6 @@ RSpec.describe 'the producer index page' do
   end
 
   it "displays the name of producers in order from most recently created" do
-
     visit "/producers"
 
     within '#producer_list' do
@@ -24,8 +21,15 @@ RSpec.describe 'the producer index page' do
     end
   end
 
-  it "has a link to create a new producer record" do
+  it "has a link to edit each producer" do
+    visit "/producers"
+    save_and_open_page
+    click_on "Edit #{@discraft.name} Info"
 
+    expect(current_path).to eq("/producers/#{@discraft.id}/edit")
+  end
+
+  it "has a link to create a new producer record" do
     visit "/producers"
     #save_and_open_page
     click_on "New Producer"
