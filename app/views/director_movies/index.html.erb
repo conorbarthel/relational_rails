@@ -1,10 +1,14 @@
 <h1>Movies</h1>
+
+<%= link_to "Sort Movies A->Z", "/director/#{@director.id}/movies?sort=asc" %>
 <div>
 <% @movies.each do |movie| %>
   <h2><%= movie.title %></h2>
   <h3>Recently Viewed: <%= movie.recently_viewed %></h3>
   <h3>Length: <%= movie.length %></h3>
   <h3>Genre: <%= movie.genre %></h3>
-  <h3>Director: <%= movie.director_id %></h3>
+  <h3>Director: <%= @director.name %></h3>
 <% end %>
 </div>
+
+<%= link_to "Add Movie", "/directors/#{@director.id}/movies/new" %>

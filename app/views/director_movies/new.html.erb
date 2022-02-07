@@ -1,0 +1,21 @@
+<h1> Add Movie by <%= @director.name %> </h1>
+
+<%= form_with url: "/directors/#{@director.id}/movies", method: :post, local: true do |form| %>
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :length %>
+    <%= form.number_field :length %>
+  </p>
+  <p>
+    <%= form.label :genre %>
+    <%= form.text_field :genre %>
+  </p>
+  <p>
+    <%= form.label :recently_viewed %>
+    <%= form.check_box :recently_viewed %>
+  </p>
+  <%= form.submit "Create Movie" %>
+<% end %>

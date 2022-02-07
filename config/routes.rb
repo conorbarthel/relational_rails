@@ -13,9 +13,19 @@ Rails.application.routes.draw do
   get '/discs/:id/edit', to:'discs#edit'
   patch 'discs/:id', to:'discs#update'
   get '/discs/:id', to:'discs#show'
+
   get '/directors', to: 'directors#index'
+  get '/directors/new', to: 'directors#new'
   get '/directors/:id', to: 'directors#show'
+  get '/directors/:id/edit', to: 'directors#edit'
+  get '/directors/:id/movies', to: 'director_movies#index'
+  get '/directors/:id/movies/new', to: 'director_movies#new'
+  post '/directors/:id/movies', to: 'director_movies#create'
+  patch '/directors/:id', to: 'directors#update'
+  post '/directors', to: 'directors#create'
+
   get '/movies', to: 'movies#index'
   get '/movies/:id', to: 'movies#show'
-  get '/directors/:id/movies', to: 'director_movies#index'
+  get '/movies/:id/edit', to: 'movies#edit'
+  patch '/movies/:id', to: 'movies#update'
 end

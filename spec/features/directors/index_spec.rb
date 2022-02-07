@@ -11,31 +11,28 @@ RSpec.describe 'director index page', type: :feature do
     @movie_3 = @wes.movies.create!(title: 'The Grand Budapest Hotel', recently_viewed: true, length: 142, genre: 'Comedy-Drama')
     @movie_4 = @wes.movies.create!(title: 'The Life Aqatic with Steve Zissou', recently_viewed: false, length: 118, genre: 'Comedy-Drama')
   end
-  # User Story 1, Parent Index (x2)
-  # For each parent table
-  # As a visitor // When I visit '/parents'
-  # Then I see the name of each parent record in the system
-  it 'displays the director name' do
 
-    visit "/directors"
+  describe 'User Story 1' do
+    it 'displays the director name' do
 
-    expect(page).to have_content(@stanley.name)
-    expect(page).to have_content(@wes.name)
-    expect(page).to_not have_content(@movie_2.title)
-    expect(page).to_not have_content(@movie_3.title)
+      visit "/directors"
+
+      expect(page).to have_content(@stanley.name)
+      expect(page).to have_content(@wes.name)
+      expect(page).to_not have_content(@movie_2.title)
+      expect(page).to_not have_content(@movie_3.title)
+    end
   end
 
-  # User Story 6, Parent Index sorted by Most Recently Created (x2)
-  # As a visitor // When I visit the parent index,
-  # I see that records are ordered by most recently created first
-  # And next to each of the records I see when it was created
-  it 'displays the director and movies with attributes - create date ascending' do
+  describe 'User Story 6' do
+    it 'displays the director and movies with attributes - create date descending' do
 
-    visit "/directors"
+      visit "/directors"
 
-    expect(page).to have_content(@stanley.created_at)
-    expect(page).to have_content(@wes.created_at)
-    expect(@denis.name).to appear_before(@wes.name)
-    expect(@wes.name).to appear_before(@stanley.name)
+      expect(page).to have_content(@stanley.created_at)
+      expect(page).to have_content(@wes.created_at)
+      expect(@denis.name).to appear_before(@wes.name)
+      expect(@wes.name).to appear_before(@stanley.name)
+    end
   end
 end
