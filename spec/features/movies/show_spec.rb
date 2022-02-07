@@ -7,32 +7,17 @@ RSpec.describe 'movie show page', type: :feature do
     @movie_2 = @director.movies.create!(title: "Requiem for a Dream", recently_viewed: false, length: 115, genre: "Drama")
   end
 
-  # User Story 4, Child Show (x2)
-  # As a visitor // When I visit '/child_table_name/:id'
-  # Then I see the child with that id including the child's attributes:
-  it 'displays the movie name and attributes' do
+  describe 'User Story 4' do
+    it 'displays the movie name and attributes' do
 
-    visit "/movies/#{@movie_1.id}"
+      visit "/movies/#{@movie_1.id}"
 
-    expect(page).to have_content(@movie_1.title)
-    expect(page).to have_content("Recently Viewed: #{@movie_1.recently_viewed}")
-    expect(page).to have_content("Length: #{@movie_1.length}")
-    expect(page).to have_content("Genre: #{@movie_1.genre}")
-    expect(page).to_not have_content(@movie_2.title)
-    expect(page).to_not have_content(@director.name)
-  end
-
-  # User Story 14, Child Update (x2)
-  # As a visitor // When I visit a Child Show page
-  # Then I see a link to update that Child "Update Child"
-  # When I click the link
-  # I am taken to '/child_table_name/:id/edit' where I see a form to edit the child's attributes:
-  it 'displays Update Director link to directors/:id/edit' do
-
-    visit "/movies/#{@movie_1.id}"
-
-    click_on "Update Movie"
-
-    expect(current_path).to eq("/movies/#{@movie_1.id}/edit")
+      expect(page).to have_content(@movie_1.title)
+      expect(page).to have_content("Recently Viewed: #{@movie_1.recently_viewed}")
+      expect(page).to have_content("Length: #{@movie_1.length}")
+      expect(page).to have_content("Genre: #{@movie_1.genre}")
+      expect(page).to_not have_content(@movie_2.title)
+      expect(page).to_not have_content(@director.name)
+    end
   end
 end

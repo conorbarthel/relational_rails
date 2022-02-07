@@ -1,4 +1,6 @@
 <h1>Movies</h1>
+
+<%= link_to "Sort Movies A->Z", "/director/#{@director.id}/movies?sort=asc" %>
 <div>
 <% @movies.each do |movie| %>
   <h2><%= movie.title %></h2>

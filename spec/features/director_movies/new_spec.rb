@@ -8,25 +8,29 @@ RSpec.describe 'directors/:id/movies/new page', type: :feature do
     @movie_1 = @stanley.movies.create!(title: '2001: A Space Odyssey', recently_viewed: false, length: 142, genre: 'Sci-Fi')
   end
 
-  # When I fill in the form with the child's attributes:
-  # And I click the button "Create Child"
-  # Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
-  # a new child object/row is created for that parent,
-  # and I am redirected to the Parent Childs Index page where I can see the new child listed
-  it 'displays link "Add Movie" to /director/:id/movies' do
-    visit "/directors/#{@stanley.id}/movies"
-    expect(page).to_not have_content("The Shining")
+  describe 'User Story 13' do
+    it 'displays link "Add Movie" to /director/:id/movies' do
+      visit "/directors/#{@stanley.id}/movies"
 
-    click_on "Add Movie"
+      click_on "Add Movie"
+      expect(current_path).to eq("/directors/#{@stanley.id}/movies/new")
+    end
 
-    fill_in(:title, with: "The Shining")
-    fill_in(:length, with: 200)
-    fill_in(:genre, with: "Horror")
-    check('Recently viewed')
+    it 'allows Movie to be added - redirects to directors_movies' do
+      visit "/directors/#{@stanley.id}/movies"
+      expect(page).to_not have_content("The Shining")
 
-    click_button "Create Movie"
+      click_on "Add Movie"
 
-    expect(current_path).to eq("/directors/#{@stanley.id}/movies")
-    expect(page).to have_content("The Shining")
+      fill_in(:title, with: "The Shining")
+      fill_in(:length, with: 200)
+      fill_in(:genre, with: "Horror")
+      check('Recently viewed')
+
+      click_button "Create Movie"
+
+      expect(current_path).to eq("/directors/#{@stanley.id}/movies")
+      expect(page).to have_content("The Shining")
+    end
   end
 end

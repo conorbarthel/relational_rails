@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   get '/directors/:id/movies', to: 'director_movies#index'
   get '/directors/:id/movies/new', to: 'director_movies#new'
   post '/directors/:id/movies', to: 'director_movies#create'
-  post '/directors/:id', to: 'directors#update'
+  patch '/directors/:id', to: 'directors#update'
   post '/directors', to: 'directors#create'
 
   get '/movies', to: 'movies#index'
   get '/movies/:id', to: 'movies#show'
   get '/movies/:id/edit', to: 'movies#edit'
-  post '/movies/:id', to: 'movies#update'
+  patch '/movies/:id', to: 'movies#update'
 end

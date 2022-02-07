@@ -3,6 +3,12 @@ class DirectorMoviesController < ApplicationController
     # @movies = Director.find(params[:id]).movies
     @director = Director.find(params[:id])
     @movies = @director.movies
+
+    # if params[:sort]
+    #   binding.pry
+    #   @movies = @director.movies.sort
+    # else
+    # end
   end
 
   def new
