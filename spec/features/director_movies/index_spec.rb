@@ -34,12 +34,13 @@ RSpec.describe 'director/:id/movies index page', type: :feature do
   # When I click on the link
   # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
   describe 'User Story 16' do
-    xit 'displays link "Sort Movies A->Z" to /director/:id/movies' do
+    it 'displays link "Sort Movies A->Z" to /director/:id/movies' do
       visit "/directors/#{@stanley.id}/movies"
       click_on "Sort Movies A->Z"
       expect(current_path).to eq("/directors/#{@stanley.id}/movies")
-      expect(@movie_1.name).to appear_before(@movie_2)
-      expect(@movie_0.name).to appear_before(@movie_3.name)
+      save_and_open_page
+      expect("#{@movie_1.title}").to appear_before("#{@movie_2.title}")
+      expect("#{@movie_0.title}").to appear_before("#{@movie_2.title}")
     end
   end
 end

@@ -18,7 +18,8 @@ class MoviesController < ApplicationController
     redirect_to "/movies/#{movie.id}"
   end
 
-  def movie_params
-    params.permit(:title, :length, :genre, :recently_viewed)
-  end
+  private
+    def movie_params
+      params.permit(:title, :length, :genre, :recently_viewed)
+    end
 end

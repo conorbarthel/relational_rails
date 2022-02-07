@@ -7,4 +7,8 @@ class Director < ApplicationRecord
   def total_movies
     movies.count
   end
+
+  def alphabetize
+    movies.order(:title)
+  end
 end

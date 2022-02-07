@@ -1,14 +1,11 @@
 class DirectorMoviesController < ApplicationController
   def index
-    # @movies = Director.find(params[:id]).movies
     @director = Director.find(params[:id])
-    @movies = @director.movies
-
-    # if params[:sort]
-    #   binding.pry
-    #   @movies = @director.movies.sort
-    # else
-    # end
+    if params[:sort] == 'asc'
+      @movies = @director.alphabetize
+    else
+      @movies = @director.movies
+    end
   end
 
   def new
