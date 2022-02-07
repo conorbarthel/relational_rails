@@ -5,4 +5,4 @@
   <h3><%= disc.speed %></h3>
   <h3><%= disc.available %></h3>
 <% end %>
-<a href="producers/<%= @producer.id %>/discs/new">New Disc</a>
+<%= link_to "New Disc", "/producers/#{@producer.id}/discs/new" %>

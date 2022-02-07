@@ -8,7 +8,9 @@ RSpec.describe 'edit' do
   end
 
   it "the form is filled out information is updated" do
+
     visit "/discs/#{@leopard.id}/edit"
+    
     fill_in("Name", with:"Leopard3")
     fill_in("Plastic", with:"Halo")
     fill_in("Speed", with:7)

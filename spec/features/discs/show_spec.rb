@@ -25,6 +25,7 @@ RSpec.describe 'show' do
     visit "/discs/#{@leopard.id}"
     click_on "Update #{@leopard.name}"
 
-    expect(current_path).to eq("/producers/#{@leopard.id}/edit")
+    expect(current_path).to eq("/discs/#{@leopard.id}/edit")
+    #save_and_open_page
   end
 end

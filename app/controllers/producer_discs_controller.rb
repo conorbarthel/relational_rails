@@ -2,7 +2,7 @@ class ProducerDiscsController < ApplicationController
 
   def index
     @producer = Producer.find(params[:id])
-    @discs = Producer.find(params[:id]).discs
+    @discs = @producer.discs
   end
 
   def new

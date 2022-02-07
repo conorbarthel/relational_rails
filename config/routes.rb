@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post '/producers', to:'producers#create'
   patch '/producers/:id', to:'producers#update'
   get '/discs', to:'discs#index'
+  get '/discs/:id/edit', to:'discs#edit'
+  patch 'discs/:id', to:'discs#update'
   get '/discs/:id', to:'discs#show'
   get '/directors', to: 'directors#index'
   get '/directors/:id', to: 'directors#show'
