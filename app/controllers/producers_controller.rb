@@ -7,4 +7,26 @@ class ProducersController < ApplicationController
   def show
     @producer = Producer.find(params[:id])
   end
+
+  def new
+  end
+
+  def create
+    new_producer = Producer.create(producer_params)
+    redirect_to '/producers'
+  end
+
+  def producer_params
+    params.permit(:name, :number_of_athletes, :free_shipping)
+  end
+
+  def edit
+    @producer = Producer.find(params[:id])
+  end
+
+  def update
+    producer = Producer.find(params[:id])
+    producer.update(producer_params)
+    redirect_to "/producers/#{producer.id}"
+  end
 end

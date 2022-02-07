@@ -5,6 +5,13 @@ RSpec.describe Producer, type: :model do
     it {should have_many :discs}
   end
 
+  describe 'validations' do
+    it {should validate_presence_of :name}
+    it {should validate_presence_of :number_of_athletes}
+    it {should allow_value(true).for(:free_shipping)}
+    it {should allow_value(false).for(:free_shipping)}
+  end
+
   describe 'class methods' do
     it 'count' do
       innova = Producer.create!(name:'Innova', number_of_athletes: 56, free_shipping: true)

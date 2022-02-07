@@ -1,0 +1,15 @@
+<%= form_with url: "/producers/:id/discs", method: :post, local: true do |form| %>
+  <p>New Disc:</p>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :plastic %>
+  <%= form.text_field :plastic %>
+  <%= form.label :speed %>
+  <%= form.number_field :speed %>
+  <%= form.label :available %>
+  <%= form.check_box :available %>
+  <%= form.label :producer_id %>
+  <%= form.text_field :producer_id %>
+
+  <%= form.submit "Create Disc" %>
+<% end %>

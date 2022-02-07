@@ -19,7 +19,7 @@ RSpec.describe 'the producer index page' do
 
     visit "/producers"
 
-    within '#disc_1' do
+    within '#producer_list' do
       expect(@discraft.name).to appear_before(@innova.name)
     end
   end
@@ -27,21 +27,9 @@ RSpec.describe 'the producer index page' do
   it "has a link to create a new producer record" do
 
     visit "/producers"
+    #save_and_open_page
     click_on "New Producer"
 
-    expect(current_path).to eq("/producers/new")
-  end
-
-  it "creates a new producer, redirects to the index page, and shows the producer there" do
-
-    visit "/producers"
-    click_on "New Producer"
-    fill_in("Producer Name", with:"Discmainia")
-    fill_in("Number of Athletes", with:89)
-    find('#dropdown_list', :text => 'false').click
-    click_button("Save")
-
-    expect(current_path).to eq('/producers')
-    expect(page).to have_content("Discmainia")
+    expect(current_path).to eq('/producers/new')
   end
 end
