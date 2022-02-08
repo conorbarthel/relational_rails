@@ -58,4 +58,13 @@ RSpec.describe 'index' do
     expect(current_path).to eq("/producers/#{@discraft.id}/discs")
     expect(page).to_not have_content(@zone.name)
   end
+
+  it "has a link to delete each disc" do
+    visit "/producers/#{@discraft.id}/discs"
+    expect(page).to have_content(@heat.name)
+    click_on "Delete #{@heat.name}"
+
+    expect(current_path).to eq("/discs")
+    expect(page).to_not have_content(@heat.name)
+  end
 end

@@ -34,9 +34,17 @@ RSpec.describe 'index' do
 
   it "each disc has has a link to edit that disc" do
     visit "/discs"
-
     click_on "Update #{@zone.name}"
 
     expect(current_path).to eq("/discs/#{@zone.id}/edit")
+  end
+
+  it "has a link to delete each disc" do
+    visit "/discs"
+    expect(page).to have_content(@leopard.name)
+    click_on "Delete #{@leopard.name}"
+
+    expect(current_path).to eq("/discs")
+    expect(page).to_not have_content(@leopard.name)
   end
 end

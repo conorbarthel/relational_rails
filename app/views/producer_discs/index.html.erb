@@ -5,6 +5,7 @@
   <p>Speed: <%= disc.speed %></p>
   <p>Available: <%= disc.available %></p>
   <p><%= link_to "Update #{disc.name}", "/discs/#{disc.id}/edit" %></p>
+  <%= link_to "Delete #{disc.name}", "/discs/#{disc.id}", method: :delete %>
 <% end %>
 <%= link_to "New Disc", "/producers/#{@producer.id}/discs/new" %>
 <%= link_to "Sort Alphabeticaly", "/producers/#{@producer.id}/discs?sort=alpha" %>

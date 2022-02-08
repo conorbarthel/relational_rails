@@ -37,7 +37,7 @@ RSpec.describe 'the producer index page' do
     expect(current_path).to eq('/producers/new')
   end
 
-  it "has a link to delete each parent" do
+  it "has a link to delete each producer" do
     visit "/producers"
     expect(page).to have_content(@innova.name)
     click_on "Delete #{@innova.name}"
