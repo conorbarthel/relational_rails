@@ -4,6 +4,8 @@ class ProducerDiscsController < ApplicationController
     @producer = Producer.find(params[:id])
     if params[:sort] == 'alpha'
       @discs = @producer.sort_alpha
+    elsif params[:filter]
+      @discs = @producer.speed_over(params[:filter])
     else
       @discs = @producer.discs
     end

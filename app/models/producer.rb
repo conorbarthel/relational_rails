@@ -11,4 +11,8 @@ class Producer < ApplicationRecord
   def sort_alpha
     discs.order(:name)
   end
+
+  def speed_over(number)
+    self.discs.where("speed > #{number}")
+  end
 end

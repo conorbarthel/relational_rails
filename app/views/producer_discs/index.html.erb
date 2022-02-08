@@ -8,3 +8,9 @@
 <% end %>
 <%= link_to "New Disc", "/producers/#{@producer.id}/discs/new" %>
 <%= link_to "Sort Alphabeticaly", "/producers/#{@producer.id}/discs?sort=alpha" %>
+<p>Speeds Over:</p>
+<%= form_with url: "/producers/#{@producer.id}/discs?filter=speed", method: :get, local: true do |form| %>
+  <%= form.label :filter, "Speed: " %>
+  <%= form.number_field :filter %>
+  <%= form.submit "Only return discs with more than entered speed" %>
+<% end %>

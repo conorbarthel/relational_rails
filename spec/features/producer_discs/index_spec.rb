@@ -52,8 +52,9 @@ RSpec.describe 'index' do
   it "has a form to return discs with more than a given speed" do
     visit "/producers/#{@discraft.id}/discs"
     expect(page).to have_content(@zone.name)
-    fill_in("Speeds over", with:5)
-    click_on "submit"
+    #save_and_open_page
+    fill_in("Speed:", with:5)
+    click_on "Only return discs with more than entered speed"
 
     expect(current_path).to eq("/producers/#{@discraft.id}/discs")
     expect(page).to_not have_content(@zone.name)
