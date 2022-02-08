@@ -37,4 +37,16 @@ RSpec.describe 'director/:id/movies index page', type: :feature do
       expect("#{@movie_0.title}").to appear_before("#{@movie_2.title}")
     end
   end
+
+  describe 'User Story 21' do
+    it 'displays a form that takes a number value' do
+      visit "/directors/#{@stanley.id}/movies"
+      fill_in(:filter, with: 143)
+      click_button "Show Movies"
+
+      expect(current_path).to eq("/directors/#{@stanley.id}/movies")
+      expect(page).to have_content(@movie_0.title)
+      expect(page).to_not have_content(@movie_1.title)
+    end
+  end
 end

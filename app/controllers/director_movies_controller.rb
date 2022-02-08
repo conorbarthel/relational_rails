@@ -3,6 +3,9 @@ class DirectorMoviesController < ApplicationController
     @director = Director.find(params[:id])
     if params[:sort] == 'asc'
       @movies = @director.alphabetize
+    elsif params[:filter]
+      @movies = @director.movies.above_length(params[:filter])
+      binding.pry
     else
       @movies = @director.movies
     end

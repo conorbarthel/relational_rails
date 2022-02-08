@@ -1,6 +1,11 @@
 <h1>Movies</h1>
 
 <%= link_to "Sort Movies A->Z", "/directors/#{@director.id}/movies?sort=asc" %>
+<%= form_with url: "/directors/#{@director.id}/movies?filter=length", method: :get, local: true do |form| %>
+   <%= form.label :filter, "Filter by movies longer than: " %>
+   <%= form.number_field :filter, step: :any %>
+   <%= form.submit "Show Movies" %>
+<% end %>
 
 <div>
 <% @movies.each do |movie| %>
