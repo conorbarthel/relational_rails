@@ -34,10 +34,18 @@ RSpec.describe 'index' do
   it "can sort discs by alphabetical order" do
     visit "/producers/#{@discraft.id}/discs"
     expect("Zone").to appear_before("Nuke")
-    #save_and_open_page
+
     click_on "Sort Alphabeticaly"
 
     expect(current_path).to eq("/producers/#{@discraft.id}/discs")
     expect("Nuke").to appear_before("Zone")
+  end
+
+  it "each disc has has a link to edit that disc" do
+    visit "/producers/#{@discraft.id}/discs"
+    save_and_open_page
+    click_on "Update #{@zone.name}"
+
+    expect(current_path).to eq("/discs/#{@zone.id}/edit")
   end
 end

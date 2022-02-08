@@ -29,4 +29,12 @@ RSpec.describe 'index' do
     expect(page).to have_content(@zone.name)
     expect(page).to_not have_content(@rhyno.name)
   end
+
+  it "each disc has has a link to edit that disc" do
+    visit "/discs"
+    save_and_open_page
+    click_on "Update #{@zone.name}"
+
+    expect(current_path).to eq("/discs/#{@zone.id}/edit")
+  end
 end
