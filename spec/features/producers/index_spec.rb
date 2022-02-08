@@ -25,7 +25,6 @@ RSpec.describe 'the producer index page' do
 
   it "has a link to edit each producer" do
     visit "/producers"
-  
     click_on "Edit #{@discraft.name} Info"
 
     expect(current_path).to eq("/producers/#{@discraft.id}/edit")
@@ -33,9 +32,17 @@ RSpec.describe 'the producer index page' do
 
   it "has a link to create a new producer record" do
     visit "/producers"
-
     click_on "New Producer"
 
     expect(current_path).to eq('/producers/new')
+  end
+
+  it "has a link to delete each parent" do
+    visit "/producers"
+    expect(page).to have_content(@innova.name)
+    click_on "Delete #{@innova.name}"
+
+    expect(current_path).to eq("/producers")
+    expect(page).to_not have_content(@innova.name)
   end
 end
