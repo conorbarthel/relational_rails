@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'index' do
   before(:each) do
+    Disc.destroy_all
+    Producer.destroy_all
     @innova = Producer.create!(name:'Innova', number_of_athletes: 56, free_shipping: true)
     @discraft = Producer.create!(name:'Discraft', number_of_athletes: 65, free_shipping: true)
     @zone = @discraft.discs.create!(name: 'Zone', plastic: 'Glow', speed: 4, available: true)
@@ -32,7 +34,7 @@ RSpec.describe 'index' do
 
   it "each disc has has a link to edit that disc" do
     visit "/discs"
-    save_and_open_page
+
     click_on "Update #{@zone.name}"
 
     expect(current_path).to eq("/discs/#{@zone.id}/edit")

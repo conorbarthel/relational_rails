@@ -11,7 +11,7 @@ RSpec.describe 'the producer edit page' do
     fill_in("Name", with:"Innova")
     fill_in("Number of athletes", with:14)
     click_button("Update Producer")
-    #save_and_open_page
+
 
     expect(current_path).to eq("/producers/#{@innova.id}")
     expect(page).to have_content("Innova")

@@ -43,7 +43,7 @@ RSpec.describe 'index' do
 
   it "each disc has has a link to edit that disc" do
     visit "/producers/#{@discraft.id}/discs"
-    save_and_open_page
+    
     click_on "Update #{@zone.name}"
 
     expect(current_path).to eq("/discs/#{@zone.id}/edit")

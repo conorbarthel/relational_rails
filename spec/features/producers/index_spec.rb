@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'the producer index page' do
   before(:each) do
+    Disc.destroy_all
+    Producer.destroy_all
     @innova = Producer.create(name:'Innova', number_of_athletes: 56, free_shipping: true)
     @discraft = Producer.create(name:'Discraft', number_of_athletes: 65, free_shipping: true)
   end
@@ -23,7 +25,7 @@ RSpec.describe 'the producer index page' do
 
   it "has a link to edit each producer" do
     visit "/producers"
-    save_and_open_page
+  
     click_on "Edit #{@discraft.name} Info"
 
     expect(current_path).to eq("/producers/#{@discraft.id}/edit")
@@ -31,7 +33,7 @@ RSpec.describe 'the producer index page' do
 
   it "has a link to create a new producer record" do
     visit "/producers"
-    #save_and_open_page
+
     click_on "New Producer"
 
     expect(current_path).to eq('/producers/new')
