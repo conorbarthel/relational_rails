@@ -14,8 +14,9 @@ Rails.application.routes.draw do
 
   get '/discs', to:'discs#index'
   get '/discs/:id/edit', to:'discs#edit'
-  patch 'discs/:id', to:'discs#update'
   get '/discs/:id', to:'discs#show'
+  patch 'discs/:id', to:'discs#update'
+  delete '/discs/:id', to:'discs#destroy'
 
   get '/directors', to: 'directors#index'
   get '/directors/new', to: 'directors#new'

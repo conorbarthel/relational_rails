@@ -27,10 +27,10 @@ class ProducersController < ApplicationController
   end
 
   def destroy
-    producer = Producer.destroy(params[:id])
+    Producer.destroy(params[:id])
     redirect_to "/producers/"
   end
-  
+
   private
     def producer_params
       params.permit(:name, :number_of_athletes, :free_shipping)

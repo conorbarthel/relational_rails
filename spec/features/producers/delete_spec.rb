@@ -10,7 +10,7 @@ RSpec.describe "delete" do
     @leopard = @innova.discs.create!(name: 'Leopard', plastic: 'DX', speed: 6, available: true)
   end
 
-  it "can delete producers" do
+  it "can delete producers from show page" do
     visit "producers/#{@discraft.id}"
     expect(page).to have_content("#{@discraft.name}")
     click_on "Delete Producer"
