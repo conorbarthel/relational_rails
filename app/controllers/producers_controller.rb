@@ -16,10 +16,6 @@ class ProducersController < ApplicationController
     redirect_to '/producers'
   end
 
-  def producer_params
-    params.permit(:name, :number_of_athletes, :free_shipping)
-  end
-
   def edit
     @producer = Producer.find(params[:id])
   end
@@ -29,4 +25,14 @@ class ProducersController < ApplicationController
     producer.update(producer_params)
     redirect_to "/producers/#{producer.id}"
   end
+
+  def destroy
+    producer = Producer.destroy(params[:id])
+    redirect_to "/producers/"
+  end
+  
+  private
+    def producer_params
+      params.permit(:name, :number_of_athletes, :free_shipping)
+    end
 end

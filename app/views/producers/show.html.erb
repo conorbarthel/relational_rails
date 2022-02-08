@@ -5,3 +5,4 @@
 <p>Number of Discs: <%= @producer.count %></p>
 <a href="/producers/<%= @producer.id %>/discs"><%= @producer.name %> discs</a>
 <a href="/producers/<%= @producer.id %>/edit">Update <%= @producer.name %></a>
+<%= link_to "Delete Producer", "/producers/#{@producer.id}", method: :delete %>
