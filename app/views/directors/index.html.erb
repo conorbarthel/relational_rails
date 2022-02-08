@@ -1,9 +1,15 @@
-<h1>Directors</h1>
+<header>
+  <h1>Directors</h1>
+</header>
 
-<% @directors.each do |director| %>
-  <h3><%= director.name %></h3>
-  <%= link_to "Edit #{director.name}", "/directors/#{director.id}/edit" %>
-  <p>Created at: <%= director.created_at %></p>
-<% end %>
-
-<%= link_to "Add Directors", "/directors/new" %>
+<body>
+  <%= link_to "Add Directors", "/directors/new" %>
+  <div>
+    <% @directors.each do |director| %>
+      <h2><%= director.name %></h2>
+        <%= link_to "Edit #{director.name}", "/directors/#{director.id}/edit" %> ||
+        <%= link_to "Delete #{director.name}", "/directors/#{director.id}", method: :delete %>
+        <p>Created at: <%= director.created_at %></p>
+    <% end %>
+  </div>
+</body>

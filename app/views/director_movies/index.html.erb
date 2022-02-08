@@ -1,23 +1,31 @@
-<h1>Movies</h1>
+<header>
+  <h1>All Movies</h1>
+</header>
 
+<body>
 <%= link_to "Sort Movies A->Z", "/directors/#{@director.id}/movies?sort=asc" %>
+<br>
+<br>
 <%= form_with url: "/directors/#{@director.id}/movies?filter=length", method: :get, local: true do |form| %>
    <%= form.label :filter, "Filter by movies longer than: " %>
-   <%= form.number_field :filter, step: :any %>
+   <%= form.number_field :filter %>
    <%= form.submit "Show Movies" %>
 <% end %>
 
 <div>
 <% @movies.each do |movie| %>
+  <h2> <%= movie.title %> </h2>
   <p>
-    <%= movie.title %>
-    <%= link_to "Edit #{movie.title}", "/movies/#{movie.id}/edit" %>
+    <%= link_to "Edit #{movie.title}", "/movies/#{movie.id}/edit" %> |
+    <%= link_to "Delete #{movie.title}", "/movies/#{movie.id}", method: :delete %>
   </p>
-  <p>Recently Viewed: <%= movie.recently_viewed %></p>
-  <p>Length: <%= movie.length %></p>
-  <p>Genre: <%= movie.genre %></p>
-  <p>Director: <%= @director.name %></p>
+  <p>
+    Recently Viewed: <%= movie.recently_viewed %> | Length: <%= movie.length %> | Genre: <%= movie.genre %> | Director: <%= @director.name %>
+  </p>
 <% end %>
 </div>
 
+<div>
 <%= link_to "Add Movie", "/directors/#{@director.id}/movies/new" %>
+</div>
+</body>

@@ -1,20 +1,18 @@
-<h1>Movies</h1>
+<header>
+  <h1>Movies</h1>
+</header>
 
-<% @movies.each do |movie| %>
-  <p>
-    <%= movie.title %>
-    <%= link_to "Edit #{movie.title}", "/movies/#{movie.id}/edit" %>
-  </p>
-  <p>
-    Recently Viewed: <%= movie.recently_viewed %>
-  </p>
-  <p>
-    Length: <%= movie.length %>
-  </p>
-  <p>
-    Genre: <%= movie.genre %>
-  </p>
-  <p>
-    Director: <%= movie.director_id %>
-  </p>
-<% end %>
+<body>
+  <% @movies.each do |movie| %>
+    <h2> <%= movie.title %> </h2>
+      <p>
+        <%= link_to "Edit #{movie.title}", "/movies/#{movie.id}/edit" %> ||
+        <%= link_to "Delete #{movie.title}", "/movies/#{movie.id}", method: :delete %>
+      </p>
+      <p>
+        Recently Viewed: <%= movie.recently_viewed %> ||
+        Length: <%= movie.length %> ||
+        Genre: <%= movie.genre %> ||
+        Director: <%= movie.director_id %>
+      </p>
+  <% end %>

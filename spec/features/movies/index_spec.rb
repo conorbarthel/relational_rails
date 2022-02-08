@@ -30,4 +30,26 @@ RSpec.describe 'movies index page', type: :feature do
       expect(page).to_not have_content(@requiem.title)
     end
   end
+
+  describe 'User Story 23' do
+    it 'display only movies that have been recently viewed' do
+      visit "/movies"
+
+      expect(page).to have_content("The Fountain")
+
+      click_on "Delete #{@fountain.title}"
+
+      expect(current_path).to eq("/movies")
+      expect(page).to_not have_content("The Fountain")
+
+      visit "directors/#{@director.id}/movies"
+
+      expect(page).to have_content("Mother")
+
+      click_on "Delete #{@mother.title}"
+
+      expect(current_path).to eq("/movies")
+      expect(page).to_not have_content("Mother")
+    end
+  end
 end
