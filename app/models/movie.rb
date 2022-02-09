@@ -13,4 +13,8 @@ class Movie < ApplicationRecord
   def self.above_length(length)
     where("Length > #{length}")
   end
+
+  def self.alphabetize
+    order(:title)
+  end
 end
