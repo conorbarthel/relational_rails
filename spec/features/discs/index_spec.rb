@@ -41,6 +41,8 @@ RSpec.describe 'index' do
 
   it "has a link to delete each disc" do
     visit "/discs"
+
+    expect(page).to have_selector(:link_or_button, "Delete #{@zone.name}")
     expect(page).to have_content(@leopard.name)
     click_on "Delete #{@leopard.name}"
 

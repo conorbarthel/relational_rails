@@ -12,8 +12,10 @@ RSpec.describe "delete" do
 
   it "can delete discs from show page" do
     visit "discs/#{@leopard.id}"
+
     expect(page).to have_content("#{@leopard.name}")
     click_on "Delete Disc"
+    
     expect(page).to_not have_content("#{@leopard.name}")
   end
 end

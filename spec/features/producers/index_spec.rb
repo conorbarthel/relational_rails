@@ -25,6 +25,7 @@ RSpec.describe 'the producer index page' do
 
   it "has a link to edit each producer" do
     visit "/producers"
+    expect(page).to have_selector(:link_or_button, "Edit #{@innova.name} Info")
     click_on "Edit #{@discraft.name} Info"
 
     expect(current_path).to eq("/producers/#{@discraft.id}/edit")
@@ -39,6 +40,7 @@ RSpec.describe 'the producer index page' do
 
   it "has a link to delete each producer" do
     visit "/producers"
+    expect(page).to have_selector(:link_or_button, "Delete #{@discraft.name}")
     expect(page).to have_content(@innova.name)
     click_on "Delete #{@innova.name}"
 

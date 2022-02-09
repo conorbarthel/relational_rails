@@ -26,15 +26,14 @@ RSpec.describe 'index' do
 
   it "links to /producers/id:/discs/new" do
     visit "/producers/#{@discraft.id}/discs"
-
     click_on "New Disc"
+
     expect(current_path).to eq("/producers/#{@discraft.id}/discs/new")
   end
 
   it "can sort discs by alphabetical order" do
     visit "/producers/#{@discraft.id}/discs"
     expect("Zone").to appear_before("Nuke")
-
     click_on "Sort Alphabeticaly"
 
     expect(current_path).to eq("/producers/#{@discraft.id}/discs")
@@ -43,7 +42,8 @@ RSpec.describe 'index' do
 
   it "each disc has has a link to edit that disc" do
     visit "/producers/#{@discraft.id}/discs"
-
+    expect(page).to have_selector(:link_or_button, "Update #{@heat.name}")
+    expect(page).to have_selector(:link_or_button, "Update #{@nuke.name}")
     click_on "Update #{@zone.name}"
 
     expect(current_path).to eq("/discs/#{@zone.id}/edit")

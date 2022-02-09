@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'show' do
-
   before(:each) do
     @innova = Producer.create!(name:'Innova', number_of_athletes: 56, free_shipping: true)
     @discraft = Producer.create!(name:'Discraft', number_of_athletes: 65, free_shipping: true)
@@ -10,7 +9,6 @@ RSpec.describe 'show' do
   end
 
   it 'displays the attributes of a discs' do
-
     visit "/discs/#{@zone.id}"
 
     expect(page).to have_content(@zone.name)

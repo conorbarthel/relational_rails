@@ -12,8 +12,11 @@ RSpec.describe "delete" do
 
   it "can delete producers from show page" do
     visit "producers/#{@discraft.id}"
+
     expect(page).to have_content("#{@discraft.name}")
     click_on "Delete Producer"
+
+    expect(current_path).to eq("/producers")
     expect(page).to_not have_content("#{@discraft.name}")
   end
 end

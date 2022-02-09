@@ -6,7 +6,12 @@ RSpec.describe 'the producer edit page' do
     @discraft = Producer.create(name:'Discraft', number_of_athletes: 65, free_shipping: true)
   end
 
-  it "the form is filled out information is updated" do
+  it "when the form is filled out producer information is updated" do
+    visit "/producers/#{@innova.id}"
+
+    expect(page).to have_content(56)
+    expect(page).to have_content("true")
+    
     visit "/producers/#{@innova.id}/edit"
     fill_in("Name", with:"Innova")
     fill_in("Number of athletes", with:14)
