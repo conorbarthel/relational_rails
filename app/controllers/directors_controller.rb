@@ -15,8 +15,11 @@ class DirectorsController < ApplicationController
     redirect_to "/directors"
   end
 
-  def director_params
-    params.permit(:name, :awards_won, :active)
+  def destroy
+    director = Director.find(params[:id])
+    director.destroy
+
+    redirect_to "/directors"
   end
 
   def edit
@@ -29,4 +32,9 @@ class DirectorsController < ApplicationController
     director.save
     redirect_to "/directors/#{director.id}"
   end
+
+  private
+    def director_params
+      params.permit(:name, :awards_won, :active)
+    end
 end

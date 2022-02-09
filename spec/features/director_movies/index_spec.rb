@@ -28,18 +28,25 @@ RSpec.describe 'director/:id/movies index page', type: :feature do
     end
   end
 
-  # User Story 16, Sort Parent's Children in Alphabetical Order by name
-  # As a visitor // When I visit the Parent's children Index Page
-  # Then I see a link to sort children in alphabetical order
-  # When I click on the link
-  # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
   describe 'User Story 16' do
-    xit 'displays link "Sort Movies A->Z" to /director/:id/movies' do
+    it 'displays link "Sort Movies A->Z" to /director/:id/movies' do
       visit "/directors/#{@stanley.id}/movies"
       click_on "Sort Movies A->Z"
       expect(current_path).to eq("/directors/#{@stanley.id}/movies")
-      expect(@movie_1.name).to appear_before(@movie_2)
-      expect(@movie_0.name).to appear_before(@movie_3.name)
+      expect("#{@movie_1.title}").to appear_before("#{@movie_2.title}")
+      expect("#{@movie_0.title}").to appear_before("#{@movie_2.title}")
+    end
+  end
+
+  describe 'User Story 21' do
+    it 'displays a form that takes a number value' do
+      visit "/directors/#{@stanley.id}/movies"
+      fill_in(:filter, with: 143)
+      click_button "Show Movies"
+
+      expect(current_path).to eq("/directors/#{@stanley.id}/movies")
+      expect(page).to have_content(@movie_0.title)
+      expect(page).to_not have_content(@movie_1.title)
     end
   end
 end

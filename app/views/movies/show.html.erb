@@ -1,7 +1,15 @@
-<h1><%= @movie.title %></h1>
-<h3>Recently Viewed: <%= @movie.recently_viewed %></h3>
-<h3>Length: <%= @movie.length %></h3>
-<h3>Genre: <%= @movie.genre %></h3>
-<h3>Director: <%= @movie.director_id %></h3>
+<header>
+  <h1><%= @movie.title %></h1>
+</header>
 
-<%= link_to "Update Movie", "/movies/#{@movie.id}/edit" %>
+<body>
+<p>
+  Director: <%= @movie.director_id %> ||
+  Recently Viewed: <%= @movie.recently_viewed %> ||
+  Length: <%= @movie.length %> ||
+  Genre: <%= @movie.genre %> 
+</p>
+
+<%= link_to "Update Movie", "/movies/#{@movie.id}/edit" %> ||
+<%= link_to "Delete Movie", "/movies/#{@movie.id}", method: :delete %>
+</body>

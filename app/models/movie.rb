@@ -9,4 +9,12 @@ class Movie < ApplicationRecord
   def self.recently_viewed?
     where(recently_viewed: true)
   end
+
+  def self.above_length(length)
+    where("Length > #{length}")
+  end
+
+  def self.alphabetize
+    order(:title)
+  end
 end

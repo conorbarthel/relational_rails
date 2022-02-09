@@ -1,5 +1,5 @@
 class Director < ApplicationRecord
-  has_many :movies
+  has_many :movies, dependent: :destroy
   validates_presence_of :name,
                         :awards_won
   validates :active, inclusion: [true, false]
@@ -7,4 +7,8 @@ class Director < ApplicationRecord
   def total_movies
     movies.count
   end
+
+  # def alphabetize
+  #   movies.order(:title)
+  # end
 end

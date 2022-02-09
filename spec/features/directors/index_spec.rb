@@ -35,4 +35,30 @@ RSpec.describe 'director index page', type: :feature do
       expect(@wes.name).to appear_before(@stanley.name)
     end
   end
+
+  describe 'User Story 17' do
+    it 'displays link to edit parent - next to each parent' do
+      visit "/directors"
+      expect("Wes Anderson").to appear_before("Edit #{@wes.name}")
+      expect("Edit #{@wes.name}").to appear_before("Stanley Kubrick")
+
+      click_on "Edit #{@wes.name}"
+      expect(current_path).to eq("/directors/#{@wes.id}/edit")
+    end
+  end
+
+  describe 'User Story 22' do
+    it 'displays link to delete parent - next to each parent' do
+        # As a visitor // When I visit the parent index page
+      visit "/directors"
+      expect(page).to have_content("Stanley Kubrick")
+        # Next to every parent, I see a link to delete that parent
+        # When I click the link
+      click_on "Delete #{@stanley.name}"
+
+      expect(current_path).to eq("/directors")
+      expect(page).to_not have_content("Stanley Kubrick")
+      # I am returned to the Parent Index Page where I no longer see that parent
+    end
+  end
 end

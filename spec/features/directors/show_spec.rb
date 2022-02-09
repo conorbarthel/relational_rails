@@ -43,4 +43,24 @@ RSpec.describe 'director show page', type: :feature do
       expect(current_path).to eq("/directors/#{@stanley.id}/movies")
     end
   end
+
+  describe 'User Story 19' do
+    it 'displays a delete director link on show page' do
+      visit "/directors/#{@stanley.id}"
+
+      expect(page).to have_content("Delete Director")
+    end
+
+    it 'deletes director and ALL movies - redirects to parent index page' do
+      visit "/directors/#{@stanley.id}"
+
+      click_on "Delete Director"
+
+      expect(current_path).to eq("/directors")
+      expect(page).to_not have_content("Stanley Kubrick")
+
+      visit "/movies"
+      expect(page).to_not have_content("Barry Lyndon")
+    end
+  end
 end
