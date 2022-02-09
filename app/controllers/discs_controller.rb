@@ -18,7 +18,13 @@ class DiscsController < ApplicationController
     redirect_to "/discs/#{disc.id}"
   end
 
-  def disc_params
-    params.permit(:name, :plastic, :speed, :available, :producer_id)
+  def destroy
+    Disc.destroy(params[:id])
+    redirect_to "/discs"
   end
+
+  private
+    def disc_params
+      params.permit(:name, :plastic, :speed, :available, :producer_id)
+    end
 end

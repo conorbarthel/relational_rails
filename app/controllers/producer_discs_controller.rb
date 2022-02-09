@@ -2,7 +2,13 @@ class ProducerDiscsController < ApplicationController
 
   def index
     @producer = Producer.find(params[:id])
-    @discs = @producer.discs
+    if params[:sort] == 'alpha'
+      @discs = @producer.sort_alpha
+    elsif params[:filter]
+      @discs = @producer.speed_over(params[:filter])
+    else
+      @discs = @producer.discs
+    end
   end
 
   def new
@@ -13,7 +19,8 @@ class ProducerDiscsController < ApplicationController
     redirect_to '/discs'
   end
 
-  def disc_params
-    params.permit(:name, :plastic, :speed, :available, :producer_id)
-  end
+  private
+    def disc_params
+      params.permit(:name, :plastic, :speed, :available, :producer_id)
+    end
 end

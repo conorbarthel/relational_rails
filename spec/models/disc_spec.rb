@@ -4,6 +4,7 @@ RSpec.describe Disc do
   describe 'relationships' do
     it {should belong_to :producer}
   end
+
   describe 'validations' do
     it {should validate_presence_of :name}
     it {should validate_presence_of :speed}

@@ -3,16 +3,20 @@ Rails.application.routes.draw do
   get '/producers/:id/discs/new', to:'producer_discs#new'
   get '/producers/:id/discs', to:'producer_discs#index'
   post '/producers/:id/discs', to:'producer_discs#create'
+
   get '/producers/:id/edit', to:'producers#edit'
   get '/producers', to:'producers#index'
   get '/producers/new', to:'producers#new'
   get '/producers/:id', to:'producers#show'
+  delete '/producers/:id', to:'producers#destroy'
   post '/producers', to:'producers#create'
   patch '/producers/:id', to:'producers#update'
+
   get '/discs', to:'discs#index'
   get '/discs/:id/edit', to:'discs#edit'
-  patch 'discs/:id', to:'discs#update'
   get '/discs/:id', to:'discs#show'
+  patch 'discs/:id', to:'discs#update'
+  delete '/discs/:id', to:'discs#destroy'
 
   get '/directors', to: 'directors#index'
   get '/directors/new', to: 'directors#new'

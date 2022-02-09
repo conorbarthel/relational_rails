@@ -9,6 +9,10 @@ RSpec.describe 'index' do
   end
 
   it "creates a new discs, redirects to the index page, and shows the discs there" do
+    visit "/discs"
+
+    expect(page).to_not have_content("Undertaker")
+
     visit "producers/#{@discraft.id}/discs/new"
     fill_in("Name", with:"Undertaker")
     fill_in("Plastic", with:"ESP")
@@ -16,7 +20,7 @@ RSpec.describe 'index' do
     check('Available')
     fill_in("Producer", with:"#{@discraft.id}")
     click_button("Create Disc")
-
+    
     expect(current_path).to eq('/discs')
     expect(page).to have_content("Undertaker")
   end

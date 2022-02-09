@@ -1,8 +1,17 @@
 <h1>Discs</h1>
 <% @discs.each do |disc| %>
-  <h3><%= disc.name %></h3>
-  <h3><%= disc.plastic %></h3>
-  <h3><%= disc.speed %></h3>
-  <h3><%= disc.available %></h3>
+  <h3>Name: <%= disc.name %></h3>
+  <p>Plastic: <%= disc.plastic %></p>
+  <p>Speed: <%= disc.speed %></p>
+  <p>Available: <%= disc.available %></p>
+  <p><%= link_to "Update #{disc.name}", "/discs/#{disc.id}/edit" %></p>
+  <%= link_to "Delete #{disc.name}", "/discs/#{disc.id}", method: :delete %>
 <% end %>
 <%= link_to "New Disc", "/producers/#{@producer.id}/discs/new" %>
+<%= link_to "Sort Alphabeticaly", "/producers/#{@producer.id}/discs?sort=alpha" %>
+<p>Speeds Over:</p>
+<%= form_with url: "/producers/#{@producer.id}/discs?filter=speed", method: :get, local: true do |form| %>
+  <%= form.label :filter, "Speed: " %>
+  <%= form.number_field :filter %>
+  <%= form.submit "Only return discs with more than entered speed" %>
+<% end %>

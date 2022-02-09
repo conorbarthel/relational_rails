@@ -4,4 +4,5 @@ class Disc < ApplicationRecord
                         :speed,
                         :plastic
   validates :available, inclusion: [true, false]
+
 end

@@ -13,7 +13,7 @@ RSpec.describe Producer, type: :model do
   end
 
   describe 'class methods' do
-    it 'count' do
+    it '#count' do
       innova = Producer.create!(name:'Innova', number_of_athletes: 56, free_shipping: true)
 
       expect(innova.count).to eq(0)
@@ -23,6 +23,15 @@ RSpec.describe Producer, type: :model do
       innova.discs.create!(name: 'Rhyno', plastic: 'R-Pro', speed: 2, available: false)
 
       expect(innova.count).to eq(3)
+    end
+
+    it '#speed_over' do
+      @discraft = Producer.create!(name:'Discraft', number_of_athletes: 65, free_shipping: true)
+      @zone = @discraft.discs.create!(name: 'Zone', plastic: 'Glow', speed: 4, available: true)
+      @heat = @discraft.discs.create!(name: 'Heat', plastic: 'Big Z', speed: 7, available: true)
+      @nuke = @discraft.discs.create!(name: 'Nuke', plastic: 'ESP', speed: 13, available: true)
+
+      expect(@discraft.speed_over(4)).to eq([@heat, @nuke])
     end
   end
 end

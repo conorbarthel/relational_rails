@@ -8,13 +8,15 @@ RSpec.describe 'the producer new page' do
   end
 
   it "creates a new producer, redirects to the index page, and shows the producer there" do
+    visit "/producers"
 
+    expect(page).to_not have_content("Discmainia")
+    
     visit "/producers/new"
     fill_in("Name", with:"Discmainia")
     fill_in("Number of athletes", with:89)
     check('Free shipping')
     click_button("Create Producer")
-    #save_and_open_page
 
     expect(current_path).to eq('/producers')
     expect(page).to have_content("Discmainia")
